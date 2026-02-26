@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+{% block title %}Steel Windows &amp; Doors{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)"/>
+        </svg>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-4 animate-fade-in">Blackline Structures</p>
+                <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 animate-fade-in animate-delay-1">
+                    Steel Framed<br>
+                    <span class="gold-gradient">Windows &amp; Doors</span>
+                </h1>
+                <p class="text-blackline-300 text-lg md:text-xl leading-relaxed mb-8 max-w-lg animate-fade-in animate-delay-2">
+                    Precision engineered steel-framed windows and doors for residential
+                    and commercial projects across South East Queensland.
+                    Bold lines. Unmatched durability.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 animate-fade-in animate-delay-3">
+                    <a href="/quote" class="btn-primary text-blackline-950 px-8 py-3.5 rounded font-semibold text-center">
+                        Get an Instant Quote
+                    </a>
+                    <a href="/upload" class="border border-blackline-600 text-white px-8 py-3.5 rounded font-semibold hover:border-accent hover:text-accent transition text-center">
+                        Upload Schedule &rarr; AI Quote
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:flex justify-center animate-fade-in animate-delay-4">
+                <!-- Hero illustration: steel-framed window -->
+                <svg viewBox="0 0 400 500" width="380" class="drop-shadow-2xl">
+                    <!-- Outer frame -->
+                    <rect x="40" y="30" width="320" height="440" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="3"/>
+                    <!-- Inner frame border -->
+                    <rect x="55" y="45" width="290" height="410" rx="1" fill="none" stroke="#333" stroke-width="2"/>
+                    <!-- Top panes -->
+                    <rect x="62" y="52" width="136" height="195" rx="1" fill="#c8dce8" opacity="0.3"/>
+                    <rect x="202" y="52" width="136" height="195" rx="1" fill="#c8dce8" opacity="0.25"/>
+                    <!-- Bottom panes -->
+                    <rect x="62" y="253" width="136" height="195" rx="1" fill="#c8dce8" opacity="0.2"/>
+                    <rect x="202" y="253" width="136" height="195" rx="1" fill="#c8dce8" opacity="0.15"/>
+                    <!-- Cross bars -->
+                    <line x1="200" y1="45" x2="200" y2="455" stroke="#1a1a1a" stroke-width="6"/>
+                    <line x1="55" y1="250" x2="345" y2="250" stroke="#1a1a1a" stroke-width="6"/>
+                    <!-- Handle -->
+                    <rect x="186" y="235" width="28" height="30" rx="3" fill="#d4a853"/>
+                    <!-- Reflection highlights -->
+                    <line x1="80" y1="70" x2="120" y2="70" stroke="white" stroke-width="1" opacity="0.3"/>
+                    <line x1="80" y1="75" x2="100" y2="75" stroke="white" stroke-width="1" opacity="0.2"/>
+                    <line x1="220" y1="270" x2="260" y2="270" stroke="white" stroke-width="1" opacity="0.2"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Bar -->
+<section class="bg-blackline-50 border-y border-blackline-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-3xl font-black text-blackline-900">50+</div>
+                <div class="text-sm text-blackline-500 mt-1">Years Experience</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-blackline-900">100%</div>
+                <div class="text-sm text-blackline-500 mt-1">Australian Made</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-blackline-900">BAL-40</div>
+                <div class="text-sm text-blackline-500 mt-1">Bushfire Rated Options</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-blackline-900">&lt;1hr</div>
+                <div class="text-sm text-blackline-500 mt-1">AI Quote Turnaround</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">How It Works</p>
+            <h2 class="text-3xl md:text-4xl font-bold">From Schedule to Quote in Minutes</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center p-8 rounded-lg bg-blackline-50">
+                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold mb-3">1. Upload Your Schedule</h3>
+                <p class="text-blackline-500 text-sm leading-relaxed">Upload your window and door schedule PDF. Our AI reads every line item — sizes, types, quantities, hardware specs.</p>
+            </div>
+            <div class="text-center p-8 rounded-lg bg-blackline-50">
+                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold mb-3">2. AI Extracts &amp; Prices</h3>
+                <p class="text-blackline-500 text-sm leading-relaxed">Our estimating agent matches each item to our product catalogue, applies glass and finish options, and calculates pricing.</p>
+            </div>
+            <div class="text-center p-8 rounded-lg bg-blackline-50">
+                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold mb-3">3. Receive Your Quote</h3>
+                <p class="text-blackline-500 text-sm leading-relaxed">Get a detailed, itemised quote with full pricing breakdown. Review, adjust, and approve — all within one hour.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Windows Section -->
+<section id="windows" class="py-20 bg-blackline-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Product Range</p>
+            <h2 class="text-3xl md:text-4xl font-bold">Steel Framed Windows</h2>
+            <p class="text-blackline-500 mt-3 max-w-2xl mx-auto">Slimline steel profiles that maximise glass area and natural light. Powder-coated to withstand the Queensland climate.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for product in windows %}
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover border border-blackline-100">
+                <div class="product-icon">
+                    {% if product.id == 'awning-window' %}
+                    <svg viewBox="0 0 160 120" width="140">
+                        <rect x="10" y="10" width="140" height="100" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="18" y="18" width="124" height="84" rx="1" fill="#c8dce8" opacity="0.4"/>
+                        <line x1="18" y1="18" x2="80" y2="55" stroke="#1a1a1a" stroke-width="1.5" opacity="0.3"/>
+                        <line x1="142" y1="18" x2="80" y2="55" stroke="#1a1a1a" stroke-width="1.5" opacity="0.3"/>
+                        <line x1="18" y1="18" x2="142" y2="18" stroke="#d4a853" stroke-width="2"/>
+                        <circle cx="80" cy="95" r="3" fill="#d4a853"/>
+                    </svg>
+                    {% elif product.id == 'casement-window' %}
+                    <svg viewBox="0 0 160 120" width="140">
+                        <rect x="10" y="10" width="140" height="100" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="18" y="18" width="57" height="84" rx="1" fill="#c8dce8" opacity="0.4"/>
+                        <rect x="85" y="18" width="57" height="84" rx="1" fill="#c8dce8" opacity="0.35"/>
+                        <line x1="80" y1="10" x2="80" y2="110" stroke="#1a1a1a" stroke-width="4"/>
+                        <circle cx="70" cy="60" r="3" fill="#d4a853"/>
+                        <circle cx="90" cy="60" r="3" fill="#d4a853"/>
+                    </svg>
+                    {% elif product.id == 'fixed-window' %}
+                    <svg viewBox="0 0 160 120" width="140">
+                        <rect x="10" y="10" width="140" height="100" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="16" y="16" width="128" height="88" rx="1" fill="#c8dce8" opacity="0.4"/>
+                        <line x1="30" y1="28" x2="60" y2="28" stroke="white" stroke-width="1" opacity="0.4"/>
+                        <line x1="30" y1="33" x2="45" y2="33" stroke="white" stroke-width="1" opacity="0.3"/>
+                    </svg>
+                    {% elif product.id == 'sliding-window' %}
+                    <svg viewBox="0 0 160 120" width="140">
+                        <rect x="10" y="10" width="140" height="100" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="18" y="18" width="62" height="84" rx="1" fill="#c8dce8" opacity="0.4"/>
+                        <rect x="82" y="18" width="60" height="84" rx="1" fill="#c8dce8" opacity="0.3"/>
+                        <line x1="80" y1="10" x2="80" y2="110" stroke="#1a1a1a" stroke-width="3"/>
+                        <rect x="74" y="55" width="12" height="10" rx="2" fill="#d4a853"/>
+                        <path d="M 95 55 L 105 60 L 95 65" fill="none" stroke="#1a1a1a" stroke-width="1.5" opacity="0.4"/>
+                    </svg>
+                    {% endif %}
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg mb-2">{{ product.name }}</h3>
+                    <p class="text-blackline-500 text-sm mb-4 leading-relaxed">{{ product.description[:120] }}...</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        {% for feature in product.features[:3] %}
+                        <span class="text-xs bg-blackline-100 text-blackline-600 px-2 py-1 rounded">{{ feature }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-blackline-100">
+                        <span class="text-sm text-blackline-500">From</span>
+                        <span class="text-xl font-bold text-blackline-900">${{ "%.0f"|format(product.sizes[0].base_price) }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Doors Section -->
+<section id="doors" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Product Range</p>
+            <h2 class="text-3xl md:text-4xl font-bold">Steel Framed Doors</h2>
+            <p class="text-blackline-500 mt-3 max-w-2xl mx-auto">From statement entries to panoramic sliders. Engineered steel frames for strength, security, and architectural impact.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for product in doors %}
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover border border-blackline-100">
+                <div class="product-icon">
+                    {% if product.id == 'hinged-door' %}
+                    <svg viewBox="0 0 160 160" width="130">
+                        <rect x="30" y="10" width="100" height="140" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="38" y="18" width="84" height="50" rx="1" fill="#c8dce8" opacity="0.4"/>
+                        <rect x="38" y="74" width="84" height="50" rx="1" fill="#c8dce8" opacity="0.35"/>
+                        <line x1="80" y1="10" x2="80" y2="150" stroke="#1a1a1a" stroke-width="4"/>
+                        <line x1="30" y1="70" x2="130" y2="70" stroke="#1a1a1a" stroke-width="3"/>
+                        <circle cx="72" cy="100" r="4" fill="#d4a853"/>
+                        <circle cx="88" cy="100" r="4" fill="#d4a853"/>
+                    </svg>
+                    {% elif product.id == 'sliding-door' %}
+                    <svg viewBox="0 0 200 160" width="170">
+                        <rect x="10" y="10" width="180" height="140" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="18" y="18" width="82" height="124" rx="1" fill="#c8dce8" opacity="0.4"/>
+                        <rect x="104" y="18" width="78" height="124" rx="1" fill="#c8dce8" opacity="0.3"/>
+                        <line x1="102" y1="10" x2="102" y2="150" stroke="#1a1a1a" stroke-width="4"/>
+                        <rect x="94" y="75" width="16" height="10" rx="2" fill="#d4a853"/>
+                        <path d="M 125 75 L 140 80 L 125 85" fill="none" stroke="#333" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="10" y1="148" x2="190" y2="148" stroke="#555" stroke-width="2"/>
+                    </svg>
+                    {% elif product.id == 'bifold-door' %}
+                    <svg viewBox="0 0 220 160" width="180">
+                        <rect x="10" y="10" width="200" height="140" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="18" y="18" width="43" height="124" rx="1" fill="#c8dce8" opacity="0.4"/>
+                        <rect x="65" y="18" width="43" height="124" rx="1" fill="#c8dce8" opacity="0.35" transform="skewX(-3)"/>
+                        <rect x="112" y="18" width="43" height="124" rx="1" fill="#c8dce8" opacity="0.3"/>
+                        <rect x="159" y="18" width="43" height="124" rx="1" fill="#c8dce8" opacity="0.25"/>
+                        <line x1="63" y1="10" x2="63" y2="150" stroke="#1a1a1a" stroke-width="3"/>
+                        <line x1="110" y1="10" x2="110" y2="150" stroke="#1a1a1a" stroke-width="3"/>
+                        <line x1="157" y1="10" x2="157" y2="150" stroke="#1a1a1a" stroke-width="3"/>
+                        <circle cx="105" cy="80" r="3" fill="#d4a853"/>
+                        <circle cx="115" cy="80" r="3" fill="#d4a853"/>
+                    </svg>
+                    {% elif product.id == 'pivot-door' %}
+                    <svg viewBox="0 0 160 180" width="120">
+                        <rect x="30" y="5" width="100" height="170" rx="2" fill="#1a1a1a" stroke="#d4a853" stroke-width="2"/>
+                        <rect x="38" y="13" width="84" height="154" rx="1" fill="#c8dce8" opacity="0.35"/>
+                        <line x1="80" y1="5" x2="80" y2="175" stroke="#1a1a1a" stroke-width="2" opacity="0.3"/>
+                        <circle cx="80" cy="5" r="4" fill="#d4a853"/>
+                        <circle cx="80" cy="175" r="4" fill="#d4a853"/>
+                        <rect x="95" y="85" width="8" height="20" rx="2" fill="#d4a853"/>
+                        <line x1="45" y1="25" x2="65" y2="25" stroke="white" stroke-width="1" opacity="0.3"/>
+                    </svg>
+                    {% endif %}
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg mb-2">{{ product.name }}</h3>
+                    <p class="text-blackline-500 text-sm mb-4 leading-relaxed">{{ product.description[:120] }}...</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        {% for feature in product.features[:3] %}
+                        <span class="text-xs bg-blackline-100 text-blackline-600 px-2 py-1 rounded">{{ feature }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-blackline-100">
+                        <span class="text-sm text-blackline-500">From</span>
+                        <span class="text-xl font-bold text-blackline-900">${{ "%.0f"|format(product.sizes[0].base_price) }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Options Section -->
+<section class="py-20 bg-blackline-950 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Customisation</p>
+            <h2 class="text-3xl md:text-4xl font-bold">Glass, Finish &amp; Add-Ons</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Glass -->
+            <div class="bg-blackline-900 rounded-lg p-8 border border-blackline-800">
+                <h3 class="text-accent font-bold text-lg mb-4">Glass Options</h3>
+                <ul class="space-y-3">
+                    {% for glass in glass_options %}
+                    <li class="flex justify-between items-center text-sm">
+                        <span class="text-blackline-300">{{ glass.name }}</span>
+                        {% if glass.multiplier == 1.0 %}
+                        <span class="text-accent text-xs font-semibold">STANDARD</span>
+                        {% else %}
+                        <span class="text-blackline-400">{{ "%.0f"|format((glass.multiplier - 1) * 100) }}% uplift</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Finishes -->
+            <div class="bg-blackline-900 rounded-lg p-8 border border-blackline-800">
+                <h3 class="text-accent font-bold text-lg mb-4">Powder Coat Finishes</h3>
+                <ul class="space-y-3">
+                    {% for finish in finish_options %}
+                    <li class="flex justify-between items-center text-sm">
+                        <span class="text-blackline-300">{{ finish.name }}</span>
+                        {% if finish.surcharge == 0 %}
+                        <span class="text-accent text-xs font-semibold">INCLUDED</span>
+                        {% else %}
+                        <span class="text-blackline-400">+${{ finish.surcharge }}/unit</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Add-ons -->
+            <div class="bg-blackline-900 rounded-lg p-8 border border-blackline-800">
+                <h3 class="text-accent font-bold text-lg mb-4">Add-On Options</h3>
+                <ul class="space-y-3">
+                    {% for addon in addon_options %}
+                    <li class="flex justify-between items-center text-sm">
+                        <span class="text-blackline-300">{{ addon.name }}</span>
+                        <span class="text-blackline-400">+${{ "%.0f"|format(addon.price) }}/unit</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready for a Quote?</h2>
+        <p class="text-blackline-500 text-lg mb-8 max-w-2xl mx-auto">
+            Build your quote manually with our interactive configurator, or upload your
+            window &amp; door schedule and let our AI estimating agent do the work.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/quote" class="btn-primary text-blackline-950 px-10 py-4 rounded font-semibold text-lg">
+                Build a Quote
+            </a>
+            <a href="/upload" class="bg-blackline-950 text-white px-10 py-4 rounded font-semibold text-lg hover:bg-blackline-800 transition">
+                AI Takeoff &amp; Quote
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

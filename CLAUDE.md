@@ -2,98 +2,145 @@
 
 ## Project Overview
 
-**W-D Estimating Agent** is an AI-powered estimating system for construction window and door (W-D) takeoffs and pricing. The system processes construction documents (schedules, floor plans) and produces accurate quotes for window and door supply.
+**W-D Estimating Agent** is an AI-powered estimating system for Blackline Structures' steel-framed windows and doors. It processes construction documents (window/door schedules, floor plans), extracts line items via AI, and generates priced quotes — all through a web interface styled to match the Blackline brand.
 
 **Organization:** MKLC-Capital
 **Repository:** `MKLC-Capital/W-D-Estimating-Agent`
-
-## Repository Status
-
-This project is in **early-stage development** (greenfield). The codebase is being built from scratch. When contributing, expect the structure below to evolve — update this file as the project grows.
+**Client:** Blackline Structures (Queensland steel framing manufacturer)
 
 ## Project Structure
 
 ```
 W-D-Estimating-Agent/
-├── CLAUDE.md              # This file — AI assistant guide
-├── README.md              # Project overview
-└── (project files TBD)    # Architecture being established
+├── CLAUDE.md                    # This file — AI assistant guide
+├── README.md                    # Project overview and setup
+├── requirements.txt             # Python dependencies
+├── app/
+│   ├── __init__.py
+│   ├── main.py                  # FastAPI application, routes
+│   ├── models.py                # Pydantic data models
+│   ├── products.py              # Product catalog (W&D types, sizes, pricing)
+│   ├── estimator.py             # Pricing engine + AI takeoff simulation
+│   ├── templates/
+│   │   ├── base.html            # Shared layout (nav, footer, Tailwind config)
+│   │   ├── index.html           # Landing page — product showcase
+│   │   ├── quote.html           # Interactive quote builder
+│   │   ├── upload.html          # AI takeoff upload page
+│   │   └── result.html          # Quote result display
+│   └── static/
+│       └── style.css            # Additional styles (minimal)
 ```
 
-As the project grows, the expected structure should follow a standard layout appropriate to the chosen tech stack (e.g., `src/`, `tests/`, `config/`, `docs/`).
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Backend | Python 3 + FastAPI |
+| Templates | Jinja2 |
+| Frontend | Tailwind CSS (CDN), vanilla JavaScript |
+| Data models | Pydantic v2 |
+| Server | Uvicorn |
+
+## Build & Run Commands
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the development server
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# Run tests (when added)
+python -m pytest tests/
+
+# Import check
+python -c "from app.main import app; print('OK')"
+```
+
+## Key Modules
+
+### `app/products.py`
+Product catalog containing all window types (awning, casement, fixed, sliding), door types (hinged, sliding, bifold, pivot), glass options, powder coat finishes, and add-ons. Each product has multiple size options with base pricing in AUD.
+
+### `app/estimator.py`
+Pricing engine that calculates line items based on:
+- Base product price (by type + size)
+- Glass option multiplier (e.g., double-glazed = 1.65x)
+- Finish surcharge (e.g., Custom RAL = +$150)
+- Add-on items (e.g., flyscreen = +$185)
+- Quantity
+
+Also contains `simulate_ai_takeoff()` — a simulated AI extraction that returns realistic sample data as if parsed from a construction document. Replace with real AI integration later.
+
+### `app/main.py`
+FastAPI routes:
+- `GET /` — Landing page (product showcase)
+- `GET /quote` — Interactive quote builder
+- `GET /upload` — AI takeoff upload page
+- `GET /result` — Quote result display
+- `POST /api/quote` — Generate a priced quote (JSON API)
+- `POST /api/takeoff` — Simulate AI takeoff extraction (JSON API)
+- `GET /api/products` — Full product catalog (JSON API)
+
+### Templates
+- `base.html` — Shared layout with Blackline branding (dark nav, gold accent, Inter font)
+- `index.html` — Product showcase with SVG illustrations, pricing, glass/finish options
+- `quote.html` — Interactive configurator (add line items, select options, submit)
+- `upload.html` — File upload with animated AI processing steps
+- `result.html` — Professional quote output with itemised table, GST, terms
 
 ## Development Conventions
 
 ### Git Workflow
 
 - **Default branch:** `master`
-- **Feature branches:** Use descriptive names (e.g., `feature/document-parser`, `fix/pricing-calculation`)
-- Write clear, concise commit messages in imperative mood (e.g., "Add PDF schedule parser", not "Added PDF schedule parser")
-- Keep commits focused — one logical change per commit
-- Push feature branches and open PRs for review before merging to `master`
+- **Feature branches:** Descriptive names (e.g., `feature/document-parser`, `fix/pricing-calculation`)
+- Imperative mood commit messages (e.g., "Add PDF schedule parser")
+- One logical change per commit
 
 ### Code Style
 
-- Follow the conventions of whatever language/framework is adopted
-- Prefer readability and simplicity over cleverness
-- Use meaningful variable and function names that reflect the construction/estimating domain
-- Keep functions small and focused on a single responsibility
+- Python: follow standard conventions, type hints on function signatures
+- Use domain-specific names: `takeoff_items`, `unit_price`, `glass_multiplier`, `line_total`
+- Keep functions small and focused
+- Templates: Jinja2 with Tailwind utility classes
 
 ### Testing
 
-- Write tests for all business logic, especially pricing calculations and document parsing
-- Tests should be runnable with a single command (document the command here as it is established)
-- Aim for high coverage on critical paths: takeoff extraction, pricing rules, quote generation
-
-### Documentation
-
-- Update this `CLAUDE.md` file when adding new major components, changing project structure, or establishing new conventions
-- Document public APIs and complex business logic inline
-- Keep the README.md focused on user-facing setup and usage instructions
+- Write tests for all pricing logic (critical path)
+- Test the estimation engine with edge cases (zero quantity, unknown product IDs, boundary sizes)
+- Tests should live in `tests/` directory
 
 ## Domain Context
-
-Key terminology for AI assistants working on this project:
 
 | Term | Meaning |
 |------|---------|
 | **W-D** | Windows and Doors |
-| **Takeoff** | The process of extracting quantities and specifications from construction documents |
-| **Schedule** | A table in construction documents listing window/door specs (sizes, types, quantities, hardware) |
-| **Quote / Estimate** | The priced output provided to a client based on a takeoff |
-| **Floor Plan** | Architectural drawing showing building layout; provides context for window/door placement |
+| **Takeoff** | Extracting quantities and specs from construction documents |
+| **Schedule** | Table in construction docs listing window/door specs |
+| **Quote / Estimate** | Priced output provided to a client |
+| **Floor Plan** | Architectural drawing showing building layout |
+| **GST** | Australian Goods and Services Tax (10%) |
+| **BAL-40** | Bushfire Attack Level rating for construction in fire-prone areas |
+| **Colorbond** | Australian steel colour range (Monument, Woodland Grey, Surfmist, etc.) |
+| **IGU** | Insulated Glass Unit (double glazed) |
+| **Low-E** | Low-emissivity glass coating for thermal performance |
 
 ## AI Assistant Guidelines
 
-When working on this codebase:
-
-1. **Read before writing.** Always read existing files before modifying them. Understand the current state.
-2. **Stay focused.** Only make changes that are directly requested. Do not refactor or "improve" adjacent code.
-3. **Respect the domain.** Use construction/estimating terminology consistently. Variable names like `window_schedule`, `takeoff_items`, `unit_price` are preferred over generic names.
-4. **Test critical logic.** Any pricing, measurement, or extraction logic must have corresponding tests.
-5. **Keep it simple.** Avoid over-engineering. Build for the current requirement, not hypothetical future ones.
-6. **Update this file.** When you add a significant new component or establish a new pattern, add it to the relevant section of this CLAUDE.md.
-
-## Build & Run Commands
-
-> **Note:** To be filled in as the tech stack is established. Document all essential commands here:
->
-> ```bash
-> # Install dependencies
-> # TBD
->
-> # Run tests
-> # TBD
->
-> # Start the application
-> # TBD
->
-> # Lint / format
-> # TBD
-> ```
+1. **Read before writing.** Always read existing files before modifying them.
+2. **Stay focused.** Only make changes that are directly requested.
+3. **Respect the domain.** Use construction/estimating terminology consistently.
+4. **Test critical logic.** Pricing, measurement, and extraction logic must have tests.
+5. **Keep it simple.** Build for the current requirement, not hypothetical future ones.
+6. **Update this file.** When adding major components or changing patterns, update CLAUDE.md.
+7. **Pricing accuracy.** Double-check all arithmetic in the estimator. Pricing bugs are high-impact.
+8. **Australian context.** This is an Australian business — use AUD, metric units (mm), GST at 10%, Australian English spelling.
 
 ## Architecture Decisions
 
-Document key architecture choices here as they are made:
-
-- *(No decisions recorded yet — update as the project develops)*
+- **FastAPI + Jinja2** chosen for rapid prototyping with server-rendered pages and JSON APIs
+- **Tailwind CSS via CDN** for styling without a build step
+- **No database yet** — product catalog is in-memory (Python dicts). Migrate to DB when persistence is needed
+- **Simulated AI takeoff** — `simulate_ai_takeoff()` returns hardcoded sample data. Replace with actual document parsing (e.g., OCR + LLM extraction) in production
+- **Client-side quote state** — quote results stored in `sessionStorage` for the result page. Move to server-side sessions or DB for production

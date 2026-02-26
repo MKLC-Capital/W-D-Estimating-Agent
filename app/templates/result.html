@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}Quote Result{% endblock %}
+
+{% block content %}
+<section class="hero-gradient text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Quote Generated</p>
+        <h1 class="text-3xl md:text-4xl font-bold">Your Blackline Quote</h1>
+    </div>
+</section>
+
+<section class="py-12 bg-blackline-50 min-h-screen">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="noResult" class="hidden text-center py-20">
+            <p class="text-blackline-500 text-lg mb-4">No quote data found.</p>
+            <a href="/quote" class="btn-primary text-blackline-950 px-8 py-3 rounded font-semibold">Build a Quote</a>
+        </div>
+
+        <div id="quoteContent" class="hidden">
+            <!-- Quote Header -->
+            <div class="bg-white rounded-lg shadow-sm border border-blackline-100 p-8 mb-6">
+                <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-accent rounded-sm flex items-center justify-center">
+                                <span class="text-blackline-950 font-black text-sm">BL</span>
+                            </div>
+                            <div>
+                                <span class="font-bold text-xl tracking-tight">BLACKLINE</span>
+                                <span class="text-blackline-400 text-xs block -mt-1 tracking-widest">STRUCTURES</span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-blackline-500">
+                            <div>Blackline Steel Frame & Truss Pty Ltd</div>
+                            <div>30 Access Avenue, Yatala QLD 4207</div>
+                            <div>0421 502 800</div>
+                        </div>
+                    </div>
+                    <div class="text-right mt-4 md:mt-0">
+                        <div class="text-sm text-blackline-500">Quote Reference</div>
+                        <div id="quoteNumber" class="text-2xl font-black text-accent"></div>
+                        <div id="quoteDate" class="text-sm text-blackline-400 mt-1"></div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 p-4 bg-blackline-50 rounded-lg">
+                    <div>
+                        <div class="text-xs text-blackline-400 uppercase tracking-wide mb-1">Prepared For</div>
+                        <div id="clientName" class="font-bold text-lg"></div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-blackline-400 uppercase tracking-wide mb-1">Project Address</div>
+                        <div id="projectAddress" class="font-bold text-lg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Line Items Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-blackline-100 overflow-hidden mb-6">
+                <div class="p-6 border-b border-blackline-100">
+                    <h2 class="font-bold text-lg">Itemised Pricing</h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-blackline-50 border-b border-blackline-200">
+                                <th class="text-left py-3 px-4 font-semibold text-blackline-600">#</th>
+                                <th class="text-left py-3 px-4 font-semibold text-blackline-600">Product</th>
+                                <th class="text-left py-3 px-4 font-semibold text-blackline-600">Size</th>
+                                <th class="text-left py-3 px-4 font-semibold text-blackline-600">Glass</th>
+                                <th class="text-left py-3 px-4 font-semibold text-blackline-600">Finish</th>
+                                <th class="text-left py-3 px-4 font-semibold text-blackline-600">Add-Ons</th>
+                                <th class="text-right py-3 px-4 font-semibold text-blackline-600">Qty</th>
+                                <th class="text-right py-3 px-4 font-semibold text-blackline-600">Line Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lineItemsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Totals -->
+            <div class="bg-white rounded-lg shadow-sm border border-blackline-100 p-6 mb-8">
+                <div class="max-w-xs ml-auto space-y-3">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-blackline-500">Subtotal (ex GST)</span>
+                        <span id="subtotal" class="font-semibold"></span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-blackline-500">GST (10%)</span>
+                        <span id="gst" class="font-semibold"></span>
+                    </div>
+                    <div class="flex justify-between text-lg border-t border-blackline-200 pt-3">
+                        <span class="font-bold">Total (inc GST)</span>
+                        <span id="total" class="font-black text-accent text-xl"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terms -->
+            <div class="bg-white rounded-lg shadow-sm border border-blackline-100 p-6 mb-8">
+                <h3 class="font-bold mb-3 text-sm">Terms & Conditions</h3>
+                <ul class="text-xs text-blackline-500 space-y-1.5 list-disc list-inside">
+                    <li>Quote valid for 30 days from date of issue.</li>
+                    <li>25% deposit required upon acceptance. 50% due upon approval of shop drawings, prior to manufacture.</li>
+                    <li>Balance due on delivery. Lead time 4-6 weeks from deposit and approved shop drawings.</li>
+                    <li>Prices are supply only, ex-works Yatala QLD. Delivery and installation not included unless quoted separately.</li>
+                    <li>All steel frames powder-coated to Australian Standards. 10-year structural warranty on steel frames.</li>
+                    <li>Glass specifications subject to compliance with NCC/BCA requirements for the specific installation location.</li>
+                </ul>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.print()" class="border border-blackline-300 text-blackline-700 px-8 py-3 rounded font-semibold hover:border-accent hover:text-accent transition">
+                    Print / Save PDF
+                </button>
+                <a href="/quote" class="btn-primary text-blackline-950 px-8 py-3 rounded font-semibold text-center">
+                    Build Another Quote
+                </a>
+                <a href="/upload" class="bg-blackline-950 text-white px-8 py-3 rounded font-semibold hover:bg-blackline-800 transition text-center">
+                    Upload Another Schedule
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const data = JSON.parse(sessionStorage.getItem('quoteResult'));
+    if (!data) {
+        document.getElementById('noResult').classList.remove('hidden');
+        return;
+    }
+
+    document.getElementById('quoteContent').classList.remove('hidden');
+    document.getElementById('quoteNumber').textContent = data.quote_number;
+    document.getElementById('quoteDate').textContent = new Date().toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('clientName').textContent = data.client_name;
+    document.getElementById('projectAddress').textContent = data.project_address;
+
+    const fmt = (n) => '$' + n.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    const tbody = document.getElementById('lineItemsTable');
+    data.line_items.forEach((item, i) => {
+        const row = document.createElement('tr');
+        row.className = 'border-b border-blackline-100 hover:bg-blackline-50 transition';
+        row.innerHTML = `
+            <td class="py-3 px-4 text-blackline-400">${i + 1}</td>
+            <td class="py-3 px-4 font-medium">${item.product_name}</td>
+            <td class="py-3 px-4 text-blackline-600 text-xs">${item.size_label}</td>
+            <td class="py-3 px-4 text-blackline-600 text-xs">${item.glass_option}</td>
+            <td class="py-3 px-4 text-blackline-600 text-xs">${item.finish_option}</td>
+            <td class="py-3 px-4 text-blackline-600 text-xs">${item.addons.length > 0 ? item.addons.join(', ') : '—'}</td>
+            <td class="py-3 px-4 text-right">${item.quantity}</td>
+            <td class="py-3 px-4 text-right font-semibold">${fmt(item.line_total)}</td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    document.getElementById('subtotal').textContent = fmt(data.subtotal);
+    document.getElementById('gst').textContent = fmt(data.gst);
+    document.getElementById('total').textContent = fmt(data.total);
+});
+</script>
+{% endblock %}
