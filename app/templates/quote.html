@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% block title %}Quote Builder{% endblock %}
+
+{% block content %}
+<section class="hero-gradient text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Interactive Configurator</p>
+        <h1 class="text-3xl md:text-4xl font-bold">Build Your Quote</h1>
+        <p class="text-blackline-300 mt-3 max-w-xl">Select products, sizes, glass, and finish options. Add as many line items as you need — pricing updates instantly.</p>
+    </div>
+</section>
+
+<section class="py-12 bg-blackline-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <form id="quoteForm">
+            <!-- Client Info -->
+            <div class="bg-white rounded-lg shadow-sm border border-blackline-100 p-6 mb-8">
+                <h2 class="text-lg font-bold mb-4">Project Details</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-blackline-600 mb-1">Client / Company Name</label>
+                        <input type="text" id="clientName" value="Smith Constructions" class="w-full border border-blackline-200 rounded px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-blackline-600 mb-1">Project Address</label>
+                        <input type="text" id="projectAddress" value="42 Oceanview Terrace, Burleigh Heads QLD 4220" class="w-full border border-blackline-200 rounded px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Line Items -->
+            <div id="lineItems">
+                <!-- Populated by JS -->
+            </div>
+
+            <button type="button" onclick="addLineItem()" class="w-full border-2 border-dashed border-blackline-300 rounded-lg py-4 text-blackline-500 hover:border-accent hover:text-accent transition font-medium mb-8">
+                + Add Line Item
+            </button>
+
+            <!-- Submit -->
+            <div class="flex justify-end">
+                <button type="button" onclick="submitQuote()" class="btn-primary text-blackline-950 px-10 py-3.5 rounded font-semibold text-lg">
+                    Generate Quote
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const products = {{ products_json | safe }};
+const glassOptions = {{ glass_json | safe }};
+const finishOptions = {{ finish_json | safe }};
+const addonOptions = {{ addon_json | safe }};
+
+let lineItemCount = 0;
+
+function addLineItem() {
+    lineItemCount++;
+    const idx = lineItemCount;
+    const container = document.getElementById('lineItems');
+
+    const productOptions = products.map(p =>
+        `<option value="${p.id}">${p.name} (${p.category})</option>`
+    ).join('');
+
+    const glassOpts = glassOptions.map(g =>
+        `<option value="${g.id}" ${g.id === 'laminated-6.38mm' ? 'selected' : ''}>${g.name}${g.multiplier > 1 ? ' (+' + Math.round((g.multiplier-1)*100) + '%)' : ''}</option>`
+    ).join('');
+
+    const finishOpts = finishOptions.map(f =>
+        `<option value="${f.id}">${f.name}${f.surcharge > 0 ? ' (+$' + f.surcharge + ')' : ''}</option>`
+    ).join('');
+
+    const addonChecks = addonOptions.map(a =>
+        `<label class="flex items-center gap-2 text-sm">
+            <input type="checkbox" class="addon-check rounded" data-line="${idx}" value="${a.id}">
+            <span>${a.name} (+$${a.price})</span>
+        </label>`
+    ).join('');
+
+    const html = `
+    <div class="bg-white rounded-lg shadow-sm border border-blackline-100 p-6 mb-4 line-item" data-index="${idx}">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold text-md">Item ${idx}</h3>
+            <button type="button" onclick="removeLineItem(this)" class="text-blackline-400 hover:text-red-500 transition text-sm">Remove</button>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div>
+                <label class="block text-xs font-medium text-blackline-500 mb-1">Product</label>
+                <select class="product-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}" onchange="updateSizes(this, ${idx})">
+                    ${productOptions}
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-blackline-500 mb-1">Size</label>
+                <select class="size-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}">
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-blackline-500 mb-1">Glass</label>
+                <select class="glass-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}">
+                    ${glassOpts}
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-blackline-500 mb-1">Finish</label>
+                <select class="finish-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}">
+                    ${finishOpts}
+                </select>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-xs font-medium text-blackline-500 mb-1">Quantity</label>
+                <input type="number" class="qty-input w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}" value="1" min="1" max="100">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-blackline-500 mb-2">Add-Ons</label>
+                <div class="flex flex-wrap gap-3">
+                    ${addonChecks}
+                </div>
+            </div>
+        </div>
+    </div>`;
+
+    container.insertAdjacentHTML('beforeend', html);
+
+    // Trigger size population for the first product
+    const productSelect = container.querySelector(`.product-select[data-line="${idx}"]`);
+    updateSizes(productSelect, idx);
+}
+
+function updateSizes(selectEl, lineIdx) {
+    const productId = selectEl.value;
+    const product = products.find(p => p.id === productId);
+    const sizeSelect = document.querySelector(`.size-select[data-line="${lineIdx}"]`);
+    sizeSelect.innerHTML = product.sizes.map((s, i) =>
+        `<option value="${i}">${s.label} — $${s.base_price.toFixed(0)}</option>`
+    ).join('');
+}
+
+function removeLineItem(btn) {
+    btn.closest('.line-item').remove();
+}
+
+async function submitQuote() {
+    const items = [];
+    document.querySelectorAll('.line-item').forEach(el => {
+        const idx = el.dataset.index;
+        const productId = el.querySelector('.product-select').value;
+        const sizeIndex = parseInt(el.querySelector('.size-select').value);
+        const glassId = el.querySelector('.glass-select').value;
+        const finishId = el.querySelector('.finish-select').value;
+        const qty = parseInt(el.querySelector('.qty-input').value) || 1;
+        const addonIds = [];
+        el.querySelectorAll('.addon-check:checked').forEach(cb => addonIds.push(cb.value));
+
+        items.push({
+            product_id: productId,
+            size_index: sizeIndex,
+            quantity: qty,
+            glass_id: glassId,
+            finish_id: finishId,
+            addon_ids: addonIds,
+        });
+    });
+
+    if (items.length === 0) {
+        alert('Please add at least one line item.');
+        return;
+    }
+
+    const payload = {
+        client_name: document.getElementById('clientName').value,
+        project_address: document.getElementById('projectAddress').value,
+        items: items,
+    };
+
+    const resp = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+
+    const data = await resp.json();
+    // Store result and redirect
+    sessionStorage.setItem('quoteResult', JSON.stringify(data));
+    window.location.href = '/result';
+}
+
+// Start with 2 example line items
+addLineItem();
+addLineItem();
+</script>
+{% endblock %}
