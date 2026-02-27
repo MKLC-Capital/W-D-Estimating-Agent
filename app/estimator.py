@@ -9,6 +9,8 @@ Calculates pricing for window and door configurations based on:
 - Quantity
 """
 
+from __future__ import annotations
+
 import random
 import string
 from datetime import datetime
