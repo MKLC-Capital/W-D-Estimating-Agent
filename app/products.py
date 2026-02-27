@@ -8,10 +8,10 @@ manufactured by Blackline for residential and commercial construction.
 WINDOW_TYPES = [
     {
         "id": "awning-window",
-        "name": "Steel Awning Window",
+        "name": "Awning Window",
         "category": "windows",
-        "description": "Top-hinged steel-framed awning window. Ideal for ventilation while maintaining weather protection. Powder-coated steel frame with thermally broken profiles.",
-        "features": ["Powder-coated steel frame", "Thermally broken profile", "6.38mm laminated glass standard", "Multi-point locking", "Fly screen compatible"],
+        "description": "Top-hinged awning window engineered for ventilation without compromising weather protection. Refined steel profiles with thermally broken frames and integrated security screen option.",
+        "features": ["Thermally broken steel frame", "Low-E glass option", "Integrated security screen", "Multi-point locking", "Powder-coated finish"],
         "sizes": [
             {"label": "600 x 600mm", "width": 600, "height": 600, "base_price": 485.00},
             {"label": "900 x 900mm", "width": 900, "height": 900, "base_price": 625.00},
@@ -23,10 +23,10 @@ WINDOW_TYPES = [
     },
     {
         "id": "casement-window",
-        "name": "Steel Casement Window",
+        "name": "Casement Window",
         "category": "windows",
-        "description": "Side-hinged casement window with slimline steel frame. Maximum glass area with clean architectural lines. Available in single or double sash configurations.",
-        "features": ["Slimline steel profile", "Single or double sash", "Concealed hinges", "Low-E glass option", "BAL-40 bushfire rated option"],
+        "description": "Side-hinged casement window with slimline steel profiles designed for maximum glass area and clean architectural lines. Single or double sash configurations for large-format openings.",
+        "features": ["Slimline steel profile", "Single or double sash", "Concealed hinges", "Low-E glass option", "BAL-40 rated option"],
         "sizes": [
             {"label": "600 x 1200mm", "width": 600, "height": 1200, "base_price": 595.00},
             {"label": "900 x 1200mm", "width": 900, "height": 1200, "base_price": 735.00},
@@ -38,10 +38,10 @@ WINDOW_TYPES = [
     },
     {
         "id": "fixed-window",
-        "name": "Steel Fixed Window",
+        "name": "Fixed Window",
         "category": "windows",
-        "description": "Non-operable fixed panel with ultra-slim steel frame for maximum light and uninterrupted views. Perfect for feature walls and highlight windows.",
-        "features": ["Ultra-slim 35mm steel frame", "Maximum glass area", "Double glazed option", "Custom shapes available", "Structural silicone glazing"],
+        "description": "Non-operable fixed panel with ultra-slim steel frame for maximum light and uninterrupted views. Designed for feature walls, highlight windows, and floor-to-ceiling glazing.",
+        "features": ["Ultra-slim 35mm steel frame", "Maximum glass area", "Double glazed IGU option", "Custom shapes available", "Low-E performance glass"],
         "sizes": [
             {"label": "600 x 600mm", "width": 600, "height": 600, "base_price": 345.00},
             {"label": "900 x 1200mm", "width": 900, "height": 1200, "base_price": 485.00},
@@ -53,10 +53,10 @@ WINDOW_TYPES = [
     },
     {
         "id": "sliding-window",
-        "name": "Steel Sliding Window",
+        "name": "Sliding Window",
         "category": "windows",
-        "description": "Horizontal sliding steel-framed window. Smooth operation on stainless steel rollers. Available in 2, 3, or 4 panel configurations.",
-        "features": ["Stainless steel rollers", "Multi-panel configurations", "Flush track option", "Security mesh compatible", "Acoustic glass option"],
+        "description": "Horizontal sliding window system with refined steel profiles. Smooth operation on stainless steel rollers with 2, 3, or 4 panel configurations for larger openings.",
+        "features": ["Stainless steel rollers", "Multi-panel configurations", "Flush track option", "Integrated security screen", "Acoustic glass option"],
         "sizes": [
             {"label": "1200 x 900mm (2-panel)", "width": 1200, "height": 900, "base_price": 795.00},
             {"label": "1800 x 1200mm (2-panel)", "width": 1800, "height": 1200, "base_price": 1050.00},
@@ -71,10 +71,10 @@ WINDOW_TYPES = [
 DOOR_TYPES = [
     {
         "id": "hinged-door",
-        "name": "Steel Hinged Door",
+        "name": "Hinged Entry Door",
         "category": "doors",
-        "description": "Single or double hinged entry door with bold steel frame. Statement piece for residential and commercial entries. Fully glazed or panel options.",
-        "features": ["Heavy-duty steel frame", "3-point locking system", "Stainless steel hinges", "Glazed or panel infill", "Threshold options"],
+        "description": "Single or double hinged entry door — a statement piece for residential and commercial entries. Fully glazed or panel infill options with heavy-duty multi-point locking.",
+        "features": ["Heavy-duty steel frame", "3-point locking system", "Stainless steel hinges", "Glazed or panel infill", "Integrated security screen"],
         "sizes": [
             {"label": "820 x 2040mm (Single)", "width": 820, "height": 2040, "base_price": 1650.00},
             {"label": "920 x 2040mm (Single)", "width": 920, "height": 2040, "base_price": 1780.00},
@@ -86,10 +86,10 @@ DOOR_TYPES = [
     },
     {
         "id": "sliding-door",
-        "name": "Steel Sliding Door",
+        "name": "Lift & Slide Door",
         "category": "doors",
-        "description": "Large-format sliding steel door system. Panoramic views with industrial-strength steel framing. Smooth glide operation for openings up to 6m wide.",
-        "features": ["Openings up to 6000mm", "Top-hung or bottom-rolling", "Slim interlock profiles", "Integrated blinds option", "Flush floor track"],
+        "description": "Expansive lift-and-slide door system for panoramic views and large-format openings up to 6m wide. Slim interlock profiles that enhance light and connection to outdoor spaces.",
+        "features": ["Openings up to 6000mm", "Lift-and-slide operation", "Slim interlock profiles", "Integrated security screen", "Flush floor track"],
         "sizes": [
             {"label": "1800 x 2100mm (2-panel)", "width": 1800, "height": 2100, "base_price": 2450.00},
             {"label": "2400 x 2100mm (2-panel)", "width": 2400, "height": 2100, "base_price": 3100.00},
@@ -101,9 +101,9 @@ DOOR_TYPES = [
     },
     {
         "id": "bifold-door",
-        "name": "Steel Bifold Door",
+        "name": "Bifold Door",
         "category": "doors",
-        "description": "Multi-panel bifold door with steel frame. Opens your living space to the outdoors. Configurations from 2 to 7 panels with 90% clear opening.",
+        "description": "Multi-panel bifold door system that opens your living space to the outdoors. 2 to 7 panel configurations with 90% clear opening — designed to enhance form, light and connection.",
         "features": ["90% clear opening", "2 to 7 panel configs", "Heavy-duty track system", "Stacking left or right", "Powder-coated finish"],
         "sizes": [
             {"label": "1800 x 2100mm (2-panel)", "width": 1800, "height": 2100, "base_price": 3200.00},
@@ -116,9 +116,9 @@ DOOR_TYPES = [
     },
     {
         "id": "pivot-door",
-        "name": "Steel Pivot Door",
+        "name": "Pivot Entry Door",
         "category": "doors",
-        "description": "Architectural pivot door with concealed floor spring. A bold design statement for premium entries. Available in steel frame with glass or panel infill.",
+        "description": "Architectural pivot door with concealed floor spring — a bold design statement for premium entries. Steel frame with glass or panel infill, designed for architecture that demands more.",
         "features": ["Concealed floor spring", "Up to 1200mm wide", "Top and bottom pivot points", "Soft-close mechanism", "Custom steel patterns"],
         "sizes": [
             {"label": "900 x 2400mm", "width": 900, "height": 2400, "base_price": 3800.00},
@@ -143,18 +143,18 @@ GLASS_OPTIONS = [
 ]
 
 FINISH_OPTIONS = [
-    {"id": "matt-black", "name": "Matt Black", "surcharge": 0},
-    {"id": "satin-black", "name": "Satin Black", "surcharge": 0},
-    {"id": "monument", "name": "Monument (Colorbond)", "surcharge": 50},
-    {"id": "woodland-grey", "name": "Woodland Grey (Colorbond)", "surcharge": 50},
-    {"id": "surfmist", "name": "Surfmist (Colorbond)", "surcharge": 50},
-    {"id": "custom-ral", "name": "Custom RAL Colour", "surcharge": 150},
-    {"id": "natural-steel", "name": "Natural Steel (Clear Coat)", "surcharge": 85},
+    {"id": "black", "name": "Black", "surcharge": 0, "hex": "#0a0a0a"},
+    {"id": "charcoal", "name": "Charcoal", "surcharge": 0, "hex": "#2d2d2d"},
+    {"id": "monument", "name": "Monument", "surcharge": 50, "hex": "#3d3d3d"},
+    {"id": "woodland", "name": "Woodland", "surcharge": 50, "hex": "#4a4a42"},
+    {"id": "dune", "name": "Dune", "surcharge": 50, "hex": "#b0a48c"},
+    {"id": "white", "name": "White", "surcharge": 50, "hex": "#e8e8e8"},
+    {"id": "custom-ral", "name": "Custom RAL Colour", "surcharge": 150, "hex": None},
 ]
 
 ADDON_OPTIONS = [
     {"id": "flyscreen", "name": "Fly Screen", "price": 185.00, "applies_to": ["windows"]},
-    {"id": "security-mesh", "name": "Security Mesh Screen", "price": 350.00, "applies_to": ["windows", "doors"]},
+    {"id": "security-mesh", "name": "Stainless Steel Security Screen", "price": 350.00, "applies_to": ["windows", "doors"]},
     {"id": "hardware-upgrade", "name": "Premium Hardware Upgrade", "price": 220.00, "applies_to": ["doors"]},
     {"id": "sidelight", "name": "Fixed Sidelight Panel", "price": 480.00, "applies_to": ["doors"]},
     {"id": "transom", "name": "Transom Window Above", "price": 390.00, "applies_to": ["windows", "doors"]},
