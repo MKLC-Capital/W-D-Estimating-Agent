@@ -4,7 +4,16 @@
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
-        "includeFiles": "app/**"
+        "maxLambdaSize": "15mb",
+        "includeFiles": [
+          "app/__init__.py",
+          "app/main.py",
+          "app/models.py",
+          "app/products.py",
+          "app/estimator.py",
+          "app/templates/**",
+          "app/static/**"
+        ]
       }
     }
   ],
