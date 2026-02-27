@@ -2,6 +2,8 @@
 Pydantic models for the W-D Estimating Agent.
 """
 
+from __future__ import annotations
+
 from pydantic import BaseModel
 
 
