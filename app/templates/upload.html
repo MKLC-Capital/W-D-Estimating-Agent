@@ -4,7 +4,7 @@
 {% block content %}
 <section class="hero-gradient text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Blackline AI Estimating</p>
+        <p class="text-blackline-300 font-semibold text-sm tracking-widest uppercase mb-2">Blackline AI Estimating</p>
         <h1 class="text-3xl md:text-4xl font-bold">Upload Schedule &rarr; Instant Quote</h1>
         <p class="text-blackline-300 mt-3 max-w-2xl">Upload your window and door schedule (PDF or image). Our AI agent reads the document, extracts every line item, matches to our glazing systems, and generates a priced quote.</p>
     </div>
@@ -14,14 +14,14 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Upload Area -->
-        <div id="uploadArea" class="bg-white rounded-lg shadow-sm border-2 border-dashed border-blackline-300 p-12 text-center mb-8 hover:border-accent transition cursor-pointer" onclick="document.getElementById('fileInput').click()">
+        <div id="uploadArea" class="bg-white rounded-lg shadow-sm border-2 border-dashed border-blackline-300 p-12 text-center mb-8 hover:border-blackline-800 transition cursor-pointer" onclick="document.getElementById('fileInput').click()">
             <input type="file" id="fileInput" class="hidden" accept=".pdf,.png,.jpg,.jpeg" onchange="handleFileSelect(event)">
             <svg class="w-16 h-16 text-blackline-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
             </svg>
             <h3 class="text-lg font-bold text-blackline-700 mb-2">Drop your schedule here</h3>
             <p class="text-blackline-400 text-sm">or click to browse. Accepts PDF, PNG, JPG.</p>
-            <div id="fileName" class="mt-4 text-accent font-semibold hidden"></div>
+            <div id="fileName" class="mt-4 text-blackline-800 font-semibold hidden"></div>
         </div>
 
         <!-- What we accept -->
@@ -29,14 +29,14 @@
             <h3 class="font-bold mb-3">What to upload</h3>
             <div class="grid md:grid-cols-3 gap-4 text-sm">
                 <div class="flex items-start gap-3">
-                    <span class="text-accent font-bold text-lg">&#10003;</span>
+                    <span class="text-blackline-800 font-bold text-lg">&#10003;</span>
                     <div>
                         <div class="font-semibold">Window Schedule</div>
                         <div class="text-blackline-500">Table listing all windows with sizes, types, and notes</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-accent font-bold text-lg">&#10003;</span>
+                    <span class="text-blackline-800 font-bold text-lg">&#10003;</span>
                     <div>
                         <div class="font-semibold">Door Schedule</div>
                         <div class="text-blackline-500">Table listing all doors with dimensions, hardware, and glazing</div>
@@ -53,7 +53,7 @@
         </div>
 
         <!-- Process Button -->
-        <button id="processBtn" onclick="processUpload()" disabled class="w-full btn-primary text-blackline-950 py-4 rounded font-semibold text-lg disabled:opacity-40 disabled:cursor-not-allowed mb-8">
+        <button id="processBtn" onclick="processUpload()" disabled class="w-full btn-primary py-4 rounded font-semibold text-lg disabled:opacity-40 disabled:cursor-not-allowed mb-8">
             Run AI Takeoff &amp; Generate Quote
         </button>
 
@@ -61,7 +61,7 @@
         <div id="processing" class="hidden">
             <div class="bg-white rounded-lg shadow-sm border border-blackline-100 p-8">
                 <div class="flex items-center justify-center mb-6">
-                    <div class="animate-spin rounded-full h-12 w-12 border-4 border-blackline-200 border-t-accent"></div>
+                    <div class="animate-spin rounded-full h-12 w-12 border-4 border-blackline-200 border-t-blackline-900"></div>
                 </div>
                 <div class="text-center">
                     <h3 class="text-lg font-bold mb-2">AI Agent Processing</h3>
@@ -97,10 +97,10 @@
             </div>
 
             <div class="flex gap-4 justify-end">
-                <button onclick="editExtraction()" class="border border-blackline-300 text-blackline-700 px-8 py-3 rounded font-semibold hover:border-accent hover:text-accent transition">
+                <button onclick="editExtraction()" class="border border-blackline-300 text-blackline-700 px-8 py-3 rounded font-semibold hover:border-blackline-900 hover:text-blackline-900 transition">
                     Edit in Quote Builder
                 </button>
-                <button onclick="generateFromExtraction()" class="btn-primary text-blackline-950 px-8 py-3 rounded font-semibold">
+                <button onclick="generateFromExtraction()" class="btn-primary px-8 py-3 rounded font-semibold">
                     Generate Quote from Extraction
                 </button>
             </div>
@@ -122,7 +122,7 @@ function handleFileSelect(event) {
         document.getElementById('fileName').classList.remove('hidden');
         document.getElementById('processBtn').disabled = false;
         document.getElementById('uploadArea').classList.remove('border-blackline-300');
-        document.getElementById('uploadArea').classList.add('border-accent');
+        document.getElementById('uploadArea').classList.add('border-blackline-800');
     }
 }
 
@@ -150,7 +150,7 @@ async function processUpload() {
         await new Promise(r => setTimeout(r, 400 + Math.random() * 300));
         const stepEl = document.createElement('div');
         stepEl.className = 'flex items-center justify-center gap-2';
-        stepEl.innerHTML = `<span class="text-accent">&#10003;</span> ${steps[i]}`;
+        stepEl.innerHTML = `<span class="text-blackline-800">&#10003;</span> ${steps[i]}`;
         stepsEl.appendChild(stepEl);
     }
 
@@ -197,7 +197,7 @@ function showExtractionResults(data) {
         row.innerHTML = `
             <td class="py-3 px-2 font-mono text-xs text-blackline-500">${String(i+1).padStart(2,'0')}</td>
             <td class="py-3 px-2 text-blackline-700">${item.extracted_note}</td>
-            <td class="py-3 px-2"><span class="bg-accent/10 text-accent-dark text-xs font-semibold px-2 py-1 rounded">${item.product_id.replace(/-/g, ' ')}</span></td>
+            <td class="py-3 px-2"><span class="bg-blackline-100 text-blackline-700 text-xs font-semibold px-2 py-1 rounded">${item.product_id.replace(/-/g, ' ')}</span></td>
             <td class="py-3 px-2 text-blackline-500 text-xs">${glass ? glass.name : item.glass_id}</td>
             <td class="py-3 px-2 text-right font-semibold">${item.quantity}</td>
         `;

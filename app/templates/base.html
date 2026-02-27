@@ -24,9 +24,9 @@
                             50: '#f5f5f5',
                         },
                         'accent': {
-                            DEFAULT: '#d4a853',
-                            light: '#e4c47a',
-                            dark: '#b8912e',
+                            DEFAULT: '#ffffff',
+                            light: '#f5f5f5',
+                            dark: '#d4d4d4',
                         }
                     },
                     fontFamily: {
@@ -45,8 +45,8 @@
         .hero-gradient {
             background: linear-gradient(135deg, #0a0a0a 0%, #1f1f1f 50%, #2d2d2d 100%);
         }
-        .gold-gradient {
-            background: linear-gradient(135deg, #d4a853, #e4c47a, #d4a853);
+        .accent-gradient {
+            background: linear-gradient(135deg, #ffffff, #c8c8c8, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -65,14 +65,15 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-            border-bottom: 3px solid #d4a853;
+            border-bottom: 3px solid #1a1a1a;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #d4a853, #b8912e);
+            background: #0a0a0a;
+            color: #ffffff;
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
-            background: linear-gradient(135deg, #e4c47a, #d4a853);
+            background: #2d2d2d;
             transform: translateY(-1px);
         }
         .steel-frame-svg { stroke: #2d2d2d; stroke-width: 2; fill: none; }
@@ -95,7 +96,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="/" class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-accent rounded-sm flex items-center justify-center">
+                    <div class="w-8 h-8 bg-white rounded-sm flex items-center justify-center">
                         <span class="text-blackline-950 font-black text-sm">BL</span>
                     </div>
                     <div>
@@ -104,10 +105,10 @@
                     </div>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-sm font-medium text-blackline-300 hover:text-accent transition">Windows &amp; Doors</a>
-                    <a href="/quote" class="text-sm font-medium text-blackline-300 hover:text-accent transition">Quote Builder</a>
-                    <a href="/upload" class="text-sm font-medium text-blackline-300 hover:text-accent transition">AI Takeoff</a>
-                    <a href="/quote" class="btn-primary text-blackline-950 px-5 py-2 rounded text-sm font-semibold">
+                    <a href="/" class="text-sm font-medium text-blackline-300 hover:text-white transition">Windows &amp; Doors</a>
+                    <a href="/quote" class="text-sm font-medium text-blackline-300 hover:text-white transition">Quote Builder</a>
+                    <a href="/upload" class="text-sm font-medium text-blackline-300 hover:text-white transition">AI Takeoff</a>
+                    <a href="/quote" class="bg-white text-blackline-950 px-5 py-2 rounded text-sm font-semibold hover:bg-blackline-100 transition">
                         FREE Quote
                     </a>
                 </div>
@@ -120,9 +121,9 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-blackline-900 border-t border-blackline-800">
             <div class="px-4 py-3 space-y-2">
-                <a href="/" class="block text-sm text-blackline-300 hover:text-accent py-2">Windows &amp; Doors</a>
-                <a href="/quote" class="block text-sm text-blackline-300 hover:text-accent py-2">Quote Builder</a>
-                <a href="/upload" class="block text-sm text-blackline-300 hover:text-accent py-2">AI Takeoff</a>
+                <a href="/" class="block text-sm text-blackline-300 hover:text-white py-2">Windows &amp; Doors</a>
+                <a href="/quote" class="block text-sm text-blackline-300 hover:text-white py-2">Quote Builder</a>
+                <a href="/upload" class="block text-sm text-blackline-300 hover:text-white py-2">AI Takeoff</a>
             </div>
         </div>
     </nav>
@@ -134,7 +135,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <div class="flex items-center justify-center space-x-3 mb-4">
-                    <div class="w-8 h-8 bg-accent rounded-sm flex items-center justify-center">
+                    <div class="w-8 h-8 bg-white rounded-sm flex items-center justify-center">
                         <span class="text-blackline-950 font-black text-sm">BL</span>
                     </div>
                     <span class="font-bold text-white text-lg tracking-tight">BLACKLINE STRUCTURES</span>
@@ -145,10 +146,10 @@
                 <div>
                     <h4 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Windows &amp; Doors</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="/#windows" class="hover:text-accent transition">Window Systems</a></li>
-                        <li><a href="/#doors" class="hover:text-accent transition">Door Systems</a></li>
-                        <li><a href="/quote" class="hover:text-accent transition">Get a FREE Quote</a></li>
-                        <li><a href="/upload" class="hover:text-accent transition">AI Estimating</a></li>
+                        <li><a href="/#windows" class="hover:text-white transition">Window Systems</a></li>
+                        <li><a href="/#doors" class="hover:text-white transition">Door Systems</a></li>
+                        <li><a href="/quote" class="hover:text-white transition">Get a FREE Quote</a></li>
+                        <li><a href="/upload" class="hover:text-white transition">AI Estimating</a></li>
                     </ul>
                 </div>
                 <div>
@@ -162,9 +163,9 @@
                 <div>
                     <h4 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Company</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="https://blacklinestructures.com.au/about/" class="hover:text-accent transition">About Blackline</a></li>
-                        <li><a href="https://blacklinestructures.com.au/steel-frame-truss/" class="hover:text-accent transition">Steel Frame &amp; Truss</a></li>
-                        <li><a href="https://blacklinestructures.com.au/curvawall/" class="hover:text-accent transition">CurvaWall</a></li>
+                        <li><a href="https://blacklinestructures.com.au/about/" class="hover:text-white transition">About Blackline</a></li>
+                        <li><a href="https://blacklinestructures.com.au/steel-frame-truss/" class="hover:text-white transition">Steel Frame &amp; Truss</a></li>
+                        <li><a href="https://blacklinestructures.com.au/curvawall/" class="hover:text-white transition">CurvaWall</a></li>
                     </ul>
                 </div>
             </div>

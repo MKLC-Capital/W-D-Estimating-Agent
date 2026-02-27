@@ -4,7 +4,7 @@
 {% block content %}
 <section class="hero-gradient text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Blackline Windows &amp; Doors</p>
+        <p class="text-blackline-300 font-semibold text-sm tracking-widest uppercase mb-2">Blackline Windows &amp; Doors</p>
         <h1 class="text-3xl md:text-4xl font-bold">Build Your Quote</h1>
         <p class="text-blackline-300 mt-3 max-w-xl">Configure your glazing systems — select products, sizes, glass, colours and add-ons. Add as many line items as you need.</p>
     </div>
@@ -19,11 +19,11 @@
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-blackline-600 mb-1">Client / Company Name</label>
-                        <input type="text" id="clientName" value="Smith Constructions" class="w-full border border-blackline-200 rounded px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+                        <input type="text" id="clientName" value="Smith Constructions" class="w-full border border-blackline-200 rounded px-4 py-2.5 text-sm focus:ring-2 focus:ring-blackline-400 focus:border-blackline-400 outline-none">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-blackline-600 mb-1">Project Address</label>
-                        <input type="text" id="projectAddress" value="42 Oceanview Terrace, Burleigh Heads QLD 4220" class="w-full border border-blackline-200 rounded px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+                        <input type="text" id="projectAddress" value="42 Oceanview Terrace, Burleigh Heads QLD 4220" class="w-full border border-blackline-200 rounded px-4 py-2.5 text-sm focus:ring-2 focus:ring-blackline-400 focus:border-blackline-400 outline-none">
                     </div>
                 </div>
             </div>
@@ -33,13 +33,13 @@
                 <!-- Populated by JS -->
             </div>
 
-            <button type="button" onclick="addLineItem()" class="w-full border-2 border-dashed border-blackline-300 rounded-lg py-4 text-blackline-500 hover:border-accent hover:text-accent transition font-medium mb-8">
+            <button type="button" onclick="addLineItem()" class="w-full border-2 border-dashed border-blackline-300 rounded-lg py-4 text-blackline-500 hover:border-blackline-900 hover:text-blackline-900 transition font-medium mb-8">
                 + Add Line Item
             </button>
 
             <!-- Submit -->
             <div class="flex justify-end">
-                <button type="button" onclick="submitQuote()" class="btn-primary text-blackline-950 px-10 py-3.5 rounded font-semibold text-lg">
+                <button type="button" onclick="submitQuote()" class="btn-primary px-10 py-3.5 rounded font-semibold text-lg">
                     Generate Quote
                 </button>
             </div>
@@ -90,24 +90,24 @@ function addLineItem() {
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             <div>
                 <label class="block text-xs font-medium text-blackline-500 mb-1">Product</label>
-                <select class="product-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}" onchange="updateSizes(this, ${idx})">
+                <select class="product-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blackline-400 outline-none" data-line="${idx}" onchange="updateSizes(this, ${idx})">
                     ${productOptions}
                 </select>
             </div>
             <div>
                 <label class="block text-xs font-medium text-blackline-500 mb-1">Size</label>
-                <select class="size-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}">
+                <select class="size-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blackline-400 outline-none" data-line="${idx}">
                 </select>
             </div>
             <div>
                 <label class="block text-xs font-medium text-blackline-500 mb-1">Glass</label>
-                <select class="glass-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}">
+                <select class="glass-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blackline-400 outline-none" data-line="${idx}">
                     ${glassOpts}
                 </select>
             </div>
             <div>
                 <label class="block text-xs font-medium text-blackline-500 mb-1">Finish</label>
-                <select class="finish-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}">
+                <select class="finish-select w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blackline-400 outline-none" data-line="${idx}">
                     ${finishOpts}
                 </select>
             </div>
@@ -115,7 +115,7 @@ function addLineItem() {
         <div class="grid md:grid-cols-2 gap-4">
             <div>
                 <label class="block text-xs font-medium text-blackline-500 mb-1">Quantity</label>
-                <input type="number" class="qty-input w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-accent outline-none" data-line="${idx}" value="1" min="1" max="100">
+                <input type="number" class="qty-input w-full border border-blackline-200 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blackline-400 outline-none" data-line="${idx}" value="1" min="1" max="100">
             </div>
             <div>
                 <label class="block text-xs font-medium text-blackline-500 mb-2">Add-Ons</label>
